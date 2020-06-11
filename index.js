@@ -1,4 +1,4 @@
-/*
+class/*
   EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
     - All airplanes built with Airplane should initialize with an `isFlying` property of false.
@@ -8,7 +8,7 @@
 */
 
 // EXAMPLE SOLUTION CODE:
-class Airplane {
+ class Airplane {
   constructor(name) {
     this.name = name;
     this.isFlying = false;
@@ -19,7 +19,7 @@ class Airplane {
   land() {
     this.isFlying = false;
   }
-}
+ }
 
 /*
 // 👇 COMPLETE YOUR WORK BELOW 👇
@@ -40,9 +40,30 @@ class Airplane {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-class Person {
+ class Person {
+  constructor(attributes){
+    this.name = attributes.name;
+    this.age = attributes.age;
+    this.stomach = [];
+  }
 
-}
+ eat(food){
+   if ((this.stomach.length < 10)){
+     this.stomach.push(food);
+   }
+ }
+
+ poop (food){
+   if ((this.stomach .length = 10)){
+     this.stomach = [];
+   }
+ }
+
+ speak(){
+   return `${this.name}, ${this.age}`;
+ }
+
+ }
 
 /*
   TASK 2
@@ -59,6 +80,27 @@ class Person {
 */
 
 class Car {
+  constructor(attributes){
+    this.model = attributes.name;
+    this.milesPerGallon = attributes.milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+
+  fill(gallons){
+    this.tank = this.tank + gallons;
+  }
+
+  drive(distance){
+    this.odometer = this.odometer + distance;
+    this.tank = this.tank - distance / this.milesPerGallon;
+    const empty = this.tank * this.milesPerGallon;
+    if (distance > empty){
+      this.odometer += empty;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+  }
 
 }
 
