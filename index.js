@@ -192,7 +192,7 @@ class Student extends Instructor {
   }
 
   PRAssignment(subject){
-    return `${this.name} has subbmitted a PR for ${subject}`
+    return `${this.name} has submitted a PR for ${subject}`
   }
 
   sprintChallenge(subject){
@@ -213,8 +213,21 @@ class Student extends Instructor {
         + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
         + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
 */
-class ProjectManager {
+class ProjectManager extends Instructor{
+  constructor (projectManagerAttributes){
+    super (projectManagerAttributes);
+    this.gradClassName = projectManagerAttributes.gradClassName;
+    this.favInstructor = projectManagerAttributes.favInstructor;
+  }
 
+      standUp(slackChannel){
+        return ` ${this.name} announces to ${slackChannel}, @channel standy times!`
+      }
+
+      debugsCode(studentAttributes, subject){
+         return `${this.name} debugs ${studentAttributes.name}'s code on ${subject}. `
+      }
+      
 }
 
 /*
