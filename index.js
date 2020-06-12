@@ -1,4 +1,4 @@
-class/*
+/*
   EXAMPLE TASK:
     - Write an Airplane class whose constructor initializes `name` from an argument.
     - All airplanes built with Airplane should initialize with an `isFlying` property of false.
@@ -41,9 +41,9 @@ class/*
 */
 
  class Person {
-  constructor(attributes){
-    this.name = attributes.name;
-    this.age = attributes.age;
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
     this.stomach = [];
   }
 
@@ -59,11 +59,16 @@ class/*
    }
  }
 
- speak(){
+ toString(){
    return `${this.name}, ${this.age}`;
  }
 
  }
+
+ const fred = new Person({
+   name: 'Fred',
+   age: 30
+ })
 
 /*
   TASK 2
@@ -80,9 +85,9 @@ class/*
 */
 
 class Car {
-  constructor(attributes){
-    this.model = attributes.name;
-    this.milesPerGallon = attributes.milesPerGallon;
+  constructor(name, milesPerGallon){
+    this.model = name;
+    this.milesPerGallon = milesPerGallon;
     this.tank = 0;
     this.odometer = 0;
   }
@@ -142,7 +147,20 @@ class Lambdasian {
         + `demo` receives a `subject` string as an argument and returns the phrase 'Today we are learning about {subject}' where subject is the param passed in.
         + `grade` receives a `student` object and a `subject` string as arguments and returns '{student.name} receives a perfect score on {subject}'
 */
-class Instructor {
+class Instructor extends Lambdasian{
+   constructor(instructorAttributes){
+     super(instructorAttributes);
+     this.specialty = instructorAttributes.specialty;
+     this.favLanguage = instructorAttributes.favLanguage;
+     this.catchPhrase = instructorAttributes.catchPhrase;
+   }
+  demo(subject){
+    return `Today we are learning about ${subject}.`;
+  }
+
+  grade(student, subject){
+    `${student.name} receives a perfect score on ${subject}.`;
+  }
 
 }
 
@@ -161,8 +179,25 @@ class Instructor {
         + `PRAssignment` a method that receives a subject as an argument and returns `student.name has submitted a PR for {subject}`
         + `sprintChallenge` similar to PRAssignment but returns `student.name has begun sprint challenge on {subject}`
 */
-class Student {
+class Student extends Instructor {
+  constructor (studentAttributes){
+    super (studentAttributes);
+    this.previousBackground = studentAttributes.previousBackground;
+    this.className = studentAttributes.className;
+    this.favSubjects = studentAttributes.favSubjects;
+  }
 
+  listSubjects(){
+    return `Loving ${this.favSubjects}`
+  }
+
+  PRAssignment(subject){
+    return `${this.name} has subbmitted a PR for ${subject}`
+  }
+
+  sprintChallenge(subject){
+    return `${this.name} has begun sprint challenge on ${subject}`
+  }
 }
 
 /*
